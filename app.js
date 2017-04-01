@@ -20,9 +20,10 @@ console.log(response.statusCode);
 
   response.on('end', () => {
     // Parse the data
-    console.log(body);
-    console.log(typeof body);
+    const profile = JSON.parse(body);
     // Print the data
+    
+
   });
 
 });
