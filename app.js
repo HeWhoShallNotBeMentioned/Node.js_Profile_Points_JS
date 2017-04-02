@@ -25,6 +25,8 @@ function getProfile(username) {
       // Print the data
       printMessage(username, profile.badges.length, profile.points.JavaScript);
     });
+  }).on('error', (error) => {
+    console.error(`Problem with request: ${error.message}`);
   });
 }
 
