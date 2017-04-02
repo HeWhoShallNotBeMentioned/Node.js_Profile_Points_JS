@@ -8,7 +8,7 @@
 
 _{ The application reads data from the console, sends it off to the Treehouse student API, and returns the results to the console.
 
-  The application is triggered when a the console is triggered in the proper folder. The app looks for users in process.argv. This triggers the forEach, which then calls the main getProfile. GetProfile starts by initiating a https.get request with the username submitted via interpolation. Each layer of response is added to a body variable. Once the response end code is received the text is parsed into JSON. The message is printed into the console by calling printMessage function and sending in the requested data parameters.  
+  The application is triggered when a the console is triggered in the proper folder. The app looks for users in process.argv. This triggers the forEach, which then calls the main getProfile. GetProfile starts by initiating a https.get request with the username submitted via interpolation. Each layer of response is added to a body variable. Once the response end code is received the text is parsed into JSON. The message is printed into the console by calling printMessage function and sending in the requested data parameters.  Multi-level error handling has been added to the application. Specific layers are to catch a malformed URL before the data is sent to the API, non-JSON response data that cannot be parsed, API urls without protocols, and general catchall errors. Code to give http status code message for more clarity has also been added.
 
   It is important to note, that the application runs separately for each username and multiple can be entered in the same console entry.  }_
 
