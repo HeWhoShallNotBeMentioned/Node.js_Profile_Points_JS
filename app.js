@@ -2,6 +2,11 @@
 // Solution: Use Node.js to connect to Treehouse's API to get profile information to print out
 const https = require('https');
 
+//Print Error Messages
+function printError(error){
+  console.error(error.message);
+}
+
 
 //Function to print message to console
 function printMessage(username, badgeCount, points) {
@@ -21,16 +26,18 @@ function getProfile(username) {
       });
 
       response.on('end', () => {
-        // Parse the data
-        const profile = JSON.parse(body);
-        // Print the data
-        printMessage(username, profile.badges.length, profile.points.JavaScript);
+        try{
+          // Parse the data
+          const profile = JSON.parse(body);
+          // Print the data
+          printMessage(username, profile.badges.length, profile.points.JavaScript);
+        } catch(error){
+          printError(error);
+        }
       });
-    }).on('error', (error) => {
-      console.error(`Problem with request: ${error.message}`);
-    });
+    }).on('error', printError(error));
   } catch (error) {
-      console.error(error.message);
+    printError(error);
   }
 }
 
